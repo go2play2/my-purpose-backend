@@ -1,0 +1,49 @@
+curl -v http://localhost:5000/ping
+
+
+
+curl -v http://localhost:5000/sign-up ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"name\":\"jaehoon1\", \"email\":\"jaehoon1@jaehoon.com\", \"password\":\"1234\" }"
+
+
+curl -v http://localhost:5000/sign-up ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"name\":\"jaehoon2\", \"email\":\"jaehoon2@jaehoon.com\", \"password\":\"1234\" }"
+
+
+
+curl -v http://localhost:5000/tweet ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"id\":1, \"tweet\":\"jaehoon first tweet~!\" }"
+
+
+
+curl -v http://localhost:5000/tweet ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"id\":1, \"tweet\":\"jaehoon second tweet~!\" }"
+
+curl -v http://localhost:5000/tweet ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"id\":2, \"tweet\":\"my message~!\" }"
+
+
+
+curl -v http://localhost:5000/follow ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"id\":1, \"follow\":2 }"
+
+
+curl -v http://localhost:5000/unfollow ^
+ -H "Accept: application/json, */*" ^
+ -H "Content-Type: application/json" ^
+ -d "{ \"id\":1, \"unfollow\":1 }"
+
+
+curl -v http://localhost:5000/timeline/1
