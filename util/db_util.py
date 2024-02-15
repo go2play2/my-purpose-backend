@@ -1,3 +1,5 @@
+# db_util.py
+
 import mysql.connector
 from flask import current_app
 
@@ -10,7 +12,6 @@ def get_connection():
         password = db_config['password'], 
         database = db_config['database'],
         charset="utf8")
-    # print("=== open DB connection >>>")
     
     cursor = con.cursor(dictionary=True)
     return (con, cursor)
@@ -18,12 +19,6 @@ def get_connection():
 
 def close(connection = None, cursor = None):
     if cursor != None:
-        # print(">>> close cursor ===")
         cursor.close()
     if connection != None:
-        # print(">>> close DB connection ===")
         connection.close()
-
-
-def attr_value(obj, key):
-    return '' if obj.get(key) is None else obj.get(key)

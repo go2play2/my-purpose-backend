@@ -1,11 +1,11 @@
-from util import db_util
+from util import db_util, str_util
 
 
 class UserDao:
     def __init__(self) -> None:
         pass
 
-        
+
     def insert_user(self, user):
         con, cursor = db_util.get_connection()
 
@@ -17,10 +17,10 @@ class UserDao:
                 hashed_password
             ) VALUES (%s, %s, %s, %s)
         """, (
-            db_util.attr_value(user, 'name'), 
-            db_util.attr_value(user, 'email'), 
-            db_util.attr_value(user, 'profile'), 
-            db_util.attr_value(user, 'password') )
+            user['name'], 
+            user['email'], 
+            user['profile'], 
+            user['password'] )
         )
 
         new_user_id = cursor.lastrowid
@@ -65,8 +65,8 @@ class UserDao:
                 follow_user_id
             ) VALUES ( %s, %s )
         """, (
-            db_util.attr_value(user_follow, 'id'), 
-            db_util.attr_value(user_follow, 'follow'), 
+            str_util.get_value(user_follow, 'id'), 
+            str_util.get_value(user_follow, 'follow'), 
         ))
 
         result = cursor.rowcount
@@ -87,8 +87,8 @@ class UserDao:
             WHERE user_id = %s
             AND follow_user_id = %s
         """, (
-            db_util.attr_value(user_unfollow, 'id'), 
-            db_util.attr_value(user_unfollow, 'unfollow'), 
+            str_util.get_value(user_unfollow, 'id'), 
+            str_util.get_value(user_unfollow, 'unfollow'), 
         ))
 
         result = cursor.rowcount

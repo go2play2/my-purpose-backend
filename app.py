@@ -1,11 +1,7 @@
 # app.py
 from flask import Flask
-from service import UserService, TweetService
-from control import create_endpoints
+from control import user_control, tweet_control
 
-
-class Services:
-    pass
 
 
 def create_app(test_config = None):
@@ -16,11 +12,7 @@ def create_app(test_config = None):
     else:
         app.config.update(test_config)
 
-
-    services = Services
-    services.user_service = UserService()
-    services.tweet_service = TweetService()
-
-    create_endpoints(app, services)
+    user_control.create_endpoints(app)
+    tweet_control.create_endpoints(app)
 
     return app
