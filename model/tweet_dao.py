@@ -23,7 +23,6 @@ class TweetDao:
         con.commit()
         db_util.close(con, cursor)
 
-        print("*** new tweet inserted")
         return result
 
 
@@ -44,11 +43,7 @@ class TweetDao:
             )
         )
         
-        print("=== execute result: ", exe_result)
         tweets = cursor.fetchall()
-
-        print("=== tweets from DB: ", tweets)
-
         db_util.close(con, cursor)
 
         return tweets

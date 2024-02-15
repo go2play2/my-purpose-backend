@@ -32,10 +32,10 @@ class UserDao:
         return new_user_id
 
 
-    def select_user(self, user_id):
+    def select_user_by_id(self, user_id):
         con, cursor = db_util.get_connection()
 
-        exe_result = cursor.execute("""
+        cursor.execute("""
             SELECT 
                 id,
                 name,
@@ -45,13 +45,29 @@ class UserDao:
             WHERE id = %s
             """, (user_id,))
         
-        print("=== execute result: ", exe_result)
         user = cursor.fetchone()
-
-        print("=== user from DB: ", user)
-
         db_util.close(con, cursor)
+        return user
 
+
+
+
+    def select_user_by_email(self, email):
+        con, cursor = db_util.get_connection()
+
+        cursor.execute("""
+            SELECT 
+                id,
+                name,
+                email,
+                profile,
+                hashed_password
+            FROM mt_users
+            WHERE email = %s
+            """, (email,))
+
+        user = cursor.fetchone()
+        db_util.close(con, cursor)
         return user
 
 

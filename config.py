@@ -9,3 +9,6 @@ DB = {
 }
 
 DB_URL = f"mysql+mysqlconnector://{DB['user']}:{DB['password']}@{DB['host']}:{DB['port']}/{DB['database']}?charset=utf8"
+
+
+JWT_SECRET_KEY = 'jaehoon'
