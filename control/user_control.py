@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, send_file
 import json
 
 from control.common_control import login_required
@@ -31,6 +31,37 @@ def create_endpoints(app):
             return json.dumps(token, default=str_util.custom_json_set)
         else:
             return '', 401
+
+
+    # Profile picture 등록
+    @app.route("/profile_picture/<int:user_id>", methods=['POST'])
+    def update_profile_picture(user_id):
+        print("### update_profile_picture ###\n", request.files)
+        if 'profile_pic' not in request.files:
+            print(" ~ profile_pic file is missing !!")
+            return "File is missing.", 404
+        
+        profile_pic = request.files['profile_pic']
+        
+        if profile_pic.filename == '':
+            print(" ~ profile_pic file name is missing !!")
+            return 'File name is missing.', 404
+        
+        user_service.save_profile_picture(user_id, profile_pic)
+
+        return '', 200
+
+
+    # Profile picture 조회
+    @app.route("/profile_picture/<int:user_id>", methods=['GET'])
+    def get_profile_picture(user_id):
+        print("### get_profile_picture ###")
+        profile_pic = user_service.get_profile_picture(user_id)
+
+        if profile_pic:
+            return send_file(profile_pic)
+        else:
+            return '', 404
 
 
 

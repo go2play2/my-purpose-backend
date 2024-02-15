@@ -24,7 +24,7 @@ curl -v http://localhost:5000/login ^
 curl -v http://localhost:5000/tweet ^
  -H "Accept: application/json, */*" ^
  -H "Content-Type: application/json" ^
- -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDgwNTIzNzZ9.Li3uda7BCbH0Q1RivLRAMm-P6QHiR8PKWkWujBVW6PI"
+ -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MDgwNTIzNzZ9.Li3uda7BCbH0Q1RivLRAMm-P6QHiR8PKWkWujBVW6PI" ^
  -d "{ \"id\":1, \"tweet\":\"jaehoon first tweet~!\" }"
 
 
@@ -54,3 +54,12 @@ curl -v http://localhost:5000/unfollow ^
 
 
 curl -v http://localhost:5000/timeline/1
+
+
+
+curl http://localhost:5000/profile_picture/2 ^
+ -H "Accept: application/json, */*" ^
+ -F "profile_pic=@/1692999734638.jpg"
+
+
+

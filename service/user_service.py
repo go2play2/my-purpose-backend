@@ -1,6 +1,8 @@
+import os
 import jwt
 import bcrypt
 import datetime
+from werkzeug.utils import secure_filename
 
 from model import UserDao
 from util import str_util
@@ -52,6 +54,22 @@ class UserService:
                 'access_token': token
             }
         return jwtToken
+
+
+
+    def save_profile_picture(self, user_id, profile_pic):
+        filename = secure_filename(profile_pic.filename)
+        file_fullname = os.path.join('./profile_pictures', filename);
+        profile_pic.save(file_fullname)
+
+        self.user_dao.udpate_profile_picture(user_id, file_fullname)
+
+
+
+    def get_profile_picture(self, user_id):
+        result = self.user_dao.select_profile_picture(user_id)
+        print("Profile picture:", result)
+        return result['profile_picture'] if result else ''
 
 
 

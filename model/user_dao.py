@@ -32,6 +32,7 @@ class UserDao:
         return new_user_id
 
 
+
     def select_user_by_id(self, user_id):
         con, cursor = db_util.get_connection()
 
@@ -48,7 +49,6 @@ class UserDao:
         user = cursor.fetchone()
         db_util.close(con, cursor)
         return user
-
 
 
 
@@ -69,6 +69,35 @@ class UserDao:
         user = cursor.fetchone()
         db_util.close(con, cursor)
         return user
+
+
+
+    def udpate_profile_picture(self, user_id, file_fullname):
+        con, cursor = db_util.get_connection()
+
+        cursor.execute("""
+            UPDATE mt_users set profile_picture = %s 
+            WHERE id = %s
+            """, (file_fullname, user_id))
+
+        result = cursor.rowcount
+        con.commit()
+        db_util.close(con, cursor)
+        return result
+
+
+
+    def select_profile_picture(self, user_id):
+        con, cursor = db_util.get_connection()
+
+        cursor.execute("""
+            SELECT profile_picture from mt_users
+            WHERE id = %s
+            """, (user_id,))
+
+        result = cursor.fetchone()
+        db_util.close(con, cursor)
+        return result
 
 
 
