@@ -57,9 +57,7 @@ curl -v http://localhost:5000/timeline/1
 
 
 
-curl http://localhost:5000/profile_picture/2 ^
- -H "Accept: application/json, */*" ^
- -F "profile_pic=@/1692999734638.jpg"
+curl http://localhost:5000/profile_picture/2
 
 
 
