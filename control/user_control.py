@@ -59,7 +59,10 @@ def create_endpoints(app):
         profile_pic = user_service.get_profile_picture(user_id)
 
         if profile_pic:
-            return send_file(profile_pic)
+            # 로컬 파일 전송
+            # return send_file(profile_pic)
+            # aws 파일 정보 전송
+            return json.dumps({'img_url': profile_pic}, default=str_util.custom_json_set)
         else:
             return '', 404
 
