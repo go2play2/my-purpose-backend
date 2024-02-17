@@ -36,9 +36,9 @@ python3 -m venv .venv
 source .venv/bin/activate
 
 # package 설치
-pip install -r requirements.txt
+(.venv) pip install -r requirements.txt
 # or
-pip install flask Flask-Cors PyJWT bcrypt mysql-connector-python
+(.venv) pip install flask Flask-Cors PyJWT bcrypt mysql-connector-python boto3 pytest
 
 # 서버 부팅 후 flask 실행
 source .venv/bin/activate
