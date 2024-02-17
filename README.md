@@ -42,6 +42,6 @@ source .venv/bin/activate
 
 # 서버 부팅 후 flask 실행
 source .venv/bin/activate
-pip install flask Flask-Cors PyJWT bcrypt mysql-connector-python
+(.venv) pip install flask Flask-Cors PyJWT bcrypt mysql-connector-python boto3 pytest
 nohup flask run --host 0.0.0.0 &
 
