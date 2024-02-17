@@ -61,11 +61,17 @@ curl http://localhost:5000/profile_picture/1 ^
  -H "Accept: application/json, */*" ^
  -F "profile_pic=@d:/temp/1691622144701.jpg"
 
-curl http://localhost:5000/profile_picture/2 ^
- -H "Accept: application/json, */*" ^
- -F "profile_pic=@d:/temp/1692999734638.jpg"
-
 curl http://localhost:5000/profile_picture/2
 
+
+
+curl -v http://my-purpose-947417576.ap-northeast-2.elb.amazonaws.com/profile_picture/1 ^
+ -H "Accept: application/json, */*" ^
+ -F "profile_pic=@d:/temp/1683164330457.jpg"
+
+
+curl http://my-purpose-947417576.ap-northeast-2.elb.amazonaws.com:5000/profile_picture/2 ^
+ -H "Accept: application/json, */*" ^
+ -F "profile_pic=@d:/temp/1692999734638.jpg"
 
 
