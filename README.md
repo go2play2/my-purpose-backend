@@ -10,7 +10,17 @@ pytest -p no:warnings -vv
 
 
 
-### 기타 (ubuntu 설정) ###
+### 기타 (AWS - ubuntu 설정) ###
+
+# aws 접속
+
+<!-- my-purpose #1 -->
+ssh -i "d:\Hobby\Aws\jaehoon.pem" ubuntu@43.200.177.146
+
+<!-- my-purpose #2 -->
+ssh -i "d:\Hobby\Aws\jaehoon.pem" ubuntu@3.34.179.163
+
+
 # miniconda 설치
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh
@@ -30,6 +40,8 @@ pip install -r requirements.txt
 # or
 pip install flask Flask-Cors PyJWT bcrypt mysql-connector-python
 
-# 서버에서 flask 실행
+# 서버 부팅 후 flask 실행
+source .venv/bin/activate
+pip install flask Flask-Cors PyJWT bcrypt mysql-connector-python
 nohup flask run --host 0.0.0.0 &
 
